@@ -3,7 +3,6 @@
 using namespace std;
 #include <iostream>
 
-typedef pair<int, string> myPair;
 int main()
 {
 	map<string, string> arrWords;
@@ -12,11 +11,11 @@ int main()
 	map<string, string>::iterator it;
 
 	int userCh;
-	bool loopValid;
+	bool loopValid = true;
 
 	cout << "\tMenu: "<< "\n1.Add word\n2.Delete word \n3.Redact word\n4.Search word\n5.Print all\n6.Exit\n"<<endl;
 
-	while(true)
+	while(loopValid)
 	{
 		cout << "\nChoose option: ";
 		cin >> userCh;
@@ -53,7 +52,6 @@ int main()
 
 			if (arrWords.find(myWord) != arrWords.end())
 			{
-				it = arrWords.find(myWord);
 				cout << "Enter new definition: ";
 				cin >> myDef;
 				it->second = myDef;
@@ -87,6 +85,7 @@ int main()
 			break;
 		case 6:
 			cout << "Goodbye!"<<endl;
+			loopValid = false;
 			break;
 		default:
 			cout << "Wrong option." << endl;
